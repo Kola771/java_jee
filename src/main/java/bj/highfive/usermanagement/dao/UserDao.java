@@ -55,7 +55,10 @@ public class UserDao {
 		try {
 			// Etape: Créer la requête
 			PreparedStatement ps = connection
-					.prepareStatement("INSERT INTO `user_app`users (name, email, country) VALUES(?,?,?);");
+					.prepareStatement("INSERT INTO `user_app`.users (name, email, country) VALUES(?,?,?);");
+			ps.setString(1, user.getName());
+			ps.setString(2, user.getEmail());
+			ps.setString(3, user.getCountry());
 			// Etape: Exécuter la requête
 			result = ps.execute();
 			// Etape: Fermer la requête

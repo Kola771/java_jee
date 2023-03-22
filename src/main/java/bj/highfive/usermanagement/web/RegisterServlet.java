@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bj.highfive.usermanagement.bean.User;
+import bj.highfive.usermanagement.dao.UserDao;
+
 /**
  * Servlet implementation class RegisterServlet
  */
@@ -39,10 +42,20 @@ public class RegisterServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String country = request.getParameter("country");
 		
-		PrintWriter out = response.getWriter();
-		out.println("user name =>" + name);
-		out.println("user email =>" + email);
-		out.println("user country =>" + country);
+		//PrintWriter out = response.getWriter();
+		//out.println("user name =>" + name);
+		//out.println("user email =>" + email);
+		//out.println("user country =>" + country);
+		
+		// Initialisation de l'objet java (java bean)
+		User utilisateur = new User();
+		utilisateur.setName(name);
+		utilisateur.setEmail(email);
+		utilisateur.setCountry(country);
+		
+		// Appel de la passerelle UserDao pour persister l'utilisateur dans notre BDD
+		UserDao userDao = new UserDao();
+		userDao.createUser(utilisateur);
 }
 
 }
