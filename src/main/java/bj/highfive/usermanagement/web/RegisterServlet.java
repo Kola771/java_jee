@@ -1,22 +1,25 @@
 package bj.highfive.usermanagement.web;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class HomeServlet
+ * Servlet implementation class RegisterServlet
  */
-public class HomeServlet extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HomeServlet() {
+    public RegisterServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -30,7 +33,16 @@ public class HomeServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
+		// PrintWriter out = response.getWriter();
+		// out.println("Good");
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		String country = request.getParameter("country");
+		
+		PrintWriter out = response.getWriter();
+		out.println("user name =>" + name);
+		out.println("user email =>" + email);
+		out.println("user country =>" + country);
+}
 
 }
