@@ -24,12 +24,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Country` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table user_app.users : ~0 rows (environ)
+-- Listage des données de la table user_app.users : ~3 rows (environ)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `email`, `Country`) VALUES
-	(2, 'Bony and Clayd', 'bony@gmail.com', 'HT');
+	(2, 'Bony and Clayd', 'bony@gmail.com', 'HT'),
+	(3, 'Adolphe', 'adolphe@gmail.com', 'RE'),
+	(4, 'doni yen', 'doni@gmail.com', 'DK'),
+	(5, 'kojiji', 'iiijj@kjl', 'AD');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

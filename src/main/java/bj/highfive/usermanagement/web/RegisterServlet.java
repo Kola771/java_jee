@@ -3,6 +3,7 @@ package bj.highfive.usermanagement.web;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -56,6 +57,13 @@ public class RegisterServlet extends HttpServlet {
 		// Appel de la passerelle UserDao pour persister l'utilisateur dans notre BDD
 		UserDao userDao = new UserDao();
 		userDao.createUser(utilisateur);
+		
+		// Méthode 1 de redirection
+		//RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+		//rd.forward(request, response);
+		
+		// Méthode 2 de redirection
+		response.sendRedirect("index.jsp");
 }
 
 }
