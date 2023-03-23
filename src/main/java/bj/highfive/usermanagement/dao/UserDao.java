@@ -3,14 +3,17 @@ package bj.highfive.usermanagement.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import bj.highfive.usermanagement.bean.User;
 
 public class UserDao {
 
 	// Connexion avec la base de données
-	public Connection getConnection() {
+	public static Connection getConnection() {
 		Connection conn = null;
 
 		try {
@@ -28,15 +31,15 @@ public class UserDao {
 			 * dns mysql java ==> "jdbc:mysql://hébergeur:port/nom_de_la_BDD
 			 */
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/user_app", "root", "");
-			
+
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
+		}
 
 		return conn;
 	}
@@ -46,9 +49,8 @@ public class UserDao {
 	 * (getUserById | getAllUsers) Update => maj une ressource (updateuser) Delete
 	 * => suppr une ressource (deleteUser)
 	 */
-	
-	public boolean createUser(User user)
-	{
+
+	public static boolean createUser(User user) {
 		boolean result = false;
 		// Etape: Effectuée avec succcès (récupération de l'objet de connection)
 		Connection connection = getConnection();
@@ -68,5 +70,37 @@ public class UserDao {
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	public static List<User> getAllUsers() {
+		List<User> userList = new ArrayList<User>();
+
+		// Récupération de l'objet de connection
+		Connection conn = getConnection();
+
+		// Création de la requête
+		try {
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM users;");
+
+			// Exécuter la requête
+			ResultSet results = ps.executeQuery();
+
+			while (results.next()) {
+				User u = new User(); // Création de l'objet java (java bean)
+
+				// Récupération de la valeur des champs de la table users de la BDD user_app
+				u.setId(results.getInt("id"));
+				u.setName(results.getString("name"));
+				u.setEmail(results.getString("email"));
+				u.setCountry(results.getString("country"));
+				
+				userList.add(u);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return userList;
 	}
 }

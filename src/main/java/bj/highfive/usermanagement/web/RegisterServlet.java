@@ -55,15 +55,15 @@ public class RegisterServlet extends HttpServlet {
 		utilisateur.setCountry(country);
 		
 		// Appel de la passerelle UserDao pour persister l'utilisateur dans notre BDD
-		UserDao userDao = new UserDao();
-		userDao.createUser(utilisateur);
+		
+		UserDao.createUser(utilisateur);
 		
 		// Méthode 1 de redirection
-		//RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-		//rd.forward(request, response);
+		RequestDispatcher rd = request.getRequestDispatcher("home");
+		rd.forward(request, response);
 		
 		// Méthode 2 de redirection
-		response.sendRedirect("index.jsp");
+		// response.sendRedirect("/");
 }
 
 }

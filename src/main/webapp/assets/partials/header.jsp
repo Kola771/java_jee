@@ -10,6 +10,9 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="index.jsp">Home</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="list">Liste des utilisateurs</a>
+        </li>
         <li>        
            <a class="nav-link active" aria-current="page" href="insertuser.jsp">Créer un utilisateur</a>
         </li>

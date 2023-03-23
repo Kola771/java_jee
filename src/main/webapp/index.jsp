@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
 <link
@@ -11,7 +12,10 @@
 	<%@ include file="assets/partials/header.jsp"%>
 
 	<main>
-		<h2>Liste des utilisateurs</h2>
+		<div class="container">
+			<h2>Accueil</h2>
+		</div>
+
 	</main>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
